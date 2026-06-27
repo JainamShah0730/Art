@@ -78,7 +78,9 @@ export default function Footer() {
           */}
           <div className="flex flex-col gap-4">
             <a
-              href="mailto:jainamshah1527@gmail.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=jainamshah1527@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-4 bg-white text-black rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-emerald-400 transition-colors text-center inline-block"
             >
               jainamshah1527@gmail.com
