@@ -54,6 +54,15 @@ export const PROJECTS = [
     link: "https://meme-matrix07.vercel.app/",
     desc: "Describe any situation in natural language and AI finds the most relevant meme using semantic embeddings and vector similarity search. ",
   },
+  {
+    id: "04",
+    title: "SNIP — URL Shortener",
+    role: "Full Stack Developer",
+    tags: ["Node.js", "Docker", "PostgreSQL", "Redis", "JWT", "nginx"],
+    color: "#DBEAFE",
+    link: "https://url-shortener-lime-five.vercel.app/",
+    desc: "Production-grade URL shortener with JWT auth, Redis caching for sub-millisecond redirects, click analytics, and a multi-container Docker setup with nginx reverse proxy.",
+  },
 ];
 
 // ============================
