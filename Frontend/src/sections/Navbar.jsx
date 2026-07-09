@@ -20,51 +20,65 @@
 //     That's intentional: the 2px line should always be visible.
 //   - The HeroSection has `pt-40` to push content below this fixed navbar.
 
+import { useState, useEffect } from "react";
 import { THEME } from "../data/constants";
+import { useTheme } from "../contexts/ThemeContext";
+import { Sun, Moon } from "lucide-react";
 
 export default function Navbar() {
+  const { isDarkMode, toggleTheme } = useTheme();
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const istTime = new Intl.DateTimeFormat('en-IN', {
+        timeZone: 'Asia/Kolkata',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      }).format(now);
+      setTime(`${istTime} IST`);
+    };
+    
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <nav
       className={`
-        fixed
-        top-0
-        w-full
-        z-50
-        px-6
-        py-5
-        flex
-        justify-between
-        items-center
-        border-b
-        ${THEME.border}
-        ${THEME.bg}
-        bg-opacity-95
+        fixed top-0 w-full z-50 px-6 py-5 flex justify-between items-center border-b
+        ${THEME.border} ${THEME.bg} bg-opacity-90 backdrop-blur-md transition-colors duration-500
       `}
     >
-      {/* Left: Brand name */}
-      <span className="font-bold tracking-tighter text-lg uppercase">
-        JAINAM SHAH
-      </span>
+      {/* Left: Brand name & Pulse Capsule */}
+      <div className="flex items-center gap-6">
+        <span className="font-bold tracking-tighter text-lg uppercase">
+          JAINAM SHAH
+        </span>
+        <div className={`hidden sm:flex items-center gap-2 px-3 py-1 rounded-full text-[9px] font-mono font-bold border transition-colors duration-500 ${THEME.accentBg}`}>
+          <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
+          OPEN FOR INTERNSHIPS
+        </div>
+      </div>
 
-      {/* Right: Navigation links */}
-      {/* 
-        Why font-mono + text-[10px] + tracking-[0.2em]?
-        → This creates a "technical/editorial" feel. Mono fonts at small sizes
-          with wide letter-spacing look like magazine column headers.
-      */}
-      <div className="flex gap-8 font-mono text-[10px] uppercase tracking-[0.2em] font-bold">
-        <a
-          href="#work"
-          className="hover:opacity-40 transition-opacity"
+      {/* Right: Navigation links, Clock, & Theme Toggle */}
+      <div className="flex gap-8 items-center font-mono text-[10px] uppercase tracking-[0.2em] font-bold">
+        <span className="hidden md:inline-block opacity-40">{time}</span>
+        
+        <a href="#work" className="hover:opacity-40 transition-opacity">Work</a>
+        <a href="#about" className="hover:opacity-40 transition-opacity">About</a>
+        
+        <button
+          onClick={toggleTheme}
+          className={`p-2 rounded-full border ${THEME.border} hover:scale-110 active:scale-95 transition-all focus:outline-none`}
+          aria-label="Toggle Dark Mode"
         >
-          Work
-        </a>
-        <a
-          href="#about"
-          className="hover:opacity-40 transition-opacity"
-        >
-          About
-        </a>
+          {isDarkMode ? <Sun size={14} className="text-amber-300" /> : <Moon size={14} className="text-slate-800" />}
+        </button>
       </div>
     </nav>
   );

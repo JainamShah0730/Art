@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 
 
 export default function PrecisionCounter() {
-    const startDate = new Date("2025-06-22")
+    const startDate = new Date("2023-08-01T00:00:00")
 
     const [years, setYears] = useState(0)
 
@@ -26,9 +26,9 @@ export default function PrecisionCounter() {
         return () => clearInterval(interval)
     }, [])
     return (
-        <div className="font-mono text-[10px] tracking-tight opacity-40 uppercase">
-            Active for{" "}
-            <span className="font-bold text-[#1A1A1A] tabular-nums">
+        <div className="font-mono text-[10px] tracking-tight opacity-40 dark:opacity-60 uppercase text-[#1A1A1A] dark:text-[#E8E8E8]">
+            In the Arena for{" "}
+            <span className="font-bold text-[#1A1A1A] dark:text-white tabular-nums">
                 {years.toFixed(9)}
             </span>{" "}
             years

@@ -6,16 +6,17 @@
 // you only change it in this one file.
 
 export const THEME = {
-  // Light mode
-  bg: "bg-[#F9F8F3]",         // Cream paper background
-  text: "text-[#1A1A1A]",     // Ink black for text
-  accent: "text-[#059669]",   // Sage green for highlights
-  accentBg: "bg-[#D1FAE5]",   // Light green background
-  border: "border-[#E5E3DA]", // Subtle warm border
+  // Light and Dark modes dynamically handled via Tailwind variants
+  bg: "bg-[#F4F3EE] dark:bg-[#0D0D0E]",         // Soft alabaster warm cream -> Ultra-dark warm charcoal
+  text: "text-[#242629] dark:text-[#E1DFD9]",     // Rich slate charcoal -> Warm parchment white
+  accent: "text-[#10B981] dark:text-[#34D399]",   // Emerald green
+  accentBg: "bg-[#E8E6DD] dark:bg-[#1E293B] border-emerald-500/20 text-[#10B981]", 
+  border: "border-[#DDD9CE] dark:border-[#24262B]", // Faint warm sand -> Soft graphite
+  cardHover: "hover:bg-white hover:shadow-[0_0_15px_rgba(16,185,129,0.03)] dark:hover:bg-[#1C1C19] dark:hover:border-emerald-900/50",
 
-  // Dark mode (used in footer)
-  darkBg: "bg-[#1A1A1A]",
-  darkText: "text-[#F9F8F3]",
+  // Footer / Explicit dark mode sections
+  darkBg: "bg-[#161719] dark:bg-[#F5F4EF]",
+  darkText: "text-[#F4F3EE] dark:text-[#161719]",
 };
 
 // ============================
@@ -32,8 +33,9 @@ export const PROJECTS = [
     title: "Traveloop",
     role: "Lead Engineering",
     tags: ["React", "Node.js", "Prisma", "PostgreSQL", "Express", "Vite", "Tailwind CSS", "DeepSeek AI"],
-    color: "#E5E7EB",         // Used for hover preview card background
-    link: "https://traveloop07.vercel.app/", // The URL to visit when the project row is clicked
+    colorLight: "#E5E7EB",         
+    colorDark: "#262626",
+    link: "https://traveloop07.vercel.app/",
     desc: "Plan smarter trips — AI itineraries, live flight search, group expense splitting, all in one travel companion app.",
   },
   {
@@ -41,7 +43,8 @@ export const PROJECTS = [
     title: "Chat Application",
     role: "Full Stack Developer",
     tags: ["React", "WebSocket.io", "NodeJs", "MongoDB"],
-    color: "#D1FAE5",
+    colorLight: "#D1FAE5",
+    colorDark: "#14532D",
     link: "https://ragebait07.vercel.app/",
     desc: "Real-time chat application with messaging, user authentication, and live updates.",
   },
@@ -50,7 +53,8 @@ export const PROJECTS = [
     title: "Meme-Matrix",
     role: "Full Stack Developer",
     tags: ["React", "Node.js", "pgvector", "AI", "HuggingFace"],
-    color: "#FEE2E2",
+    colorLight: "#FEE2E2",
+    colorDark: "#7F1D1D",
     link: "https://meme-matrix07.vercel.app/",
     desc: "Describe any situation in natural language and AI finds the most relevant meme using semantic embeddings and vector similarity search. ",
   },
@@ -59,7 +63,8 @@ export const PROJECTS = [
     title: "SNIP — URL Shortener",
     role: "Full Stack Developer",
     tags: ["Node.js", "Docker", "PostgreSQL", "Redis", "JWT", "nginx"],
-    color: "#DBEAFE",
+    colorLight: "#DBEAFE",
+    colorDark: "#1E3A8A",
     link: "https://url-shortener-lime-five.vercel.app/",
     desc: "Production-grade URL shortener with JWT auth, Redis caching for sub-millisecond redirects, click analytics, and a multi-container Docker setup with nginx reverse proxy.",
   },

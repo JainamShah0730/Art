@@ -26,10 +26,10 @@
 //   Each icon accepts `size` and `className` props.
 
 import { Code2, Zap, GraduationCap, Terminal } from "lucide-react";
+import { motion } from "motion/react";
+import { THEME } from "../data/constants";
 
 export default function AboutSection() {
-  // Card data defined here since it's specific to this section
-  // (unlike PROJECTS which could be used by multiple sections)
   const cards = [
     {
       icon: Code2,
@@ -59,9 +59,7 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="mb-40">
-      {/* ============ SECTION HEADER ============ */}
-      {/* Same pattern as WorkSection — keeps visual consistency */}
-      <div className="flex items-baseline gap-4 mb-20 border-b pb-4 border-black">
+      <div className={`flex items-baseline gap-4 mb-20 border-b pb-4 ${THEME.border}`}>
         <span className="font-mono text-[10px] opacity-40 tracking-widest uppercase italic">
           Index // 02
         </span>
@@ -70,19 +68,11 @@ export default function AboutSection() {
         </h2>
       </div>
 
-      {/* ============ MAIN GRID ============ */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-20 gap-x-12">
-        {/* Left column: headline */}
-        {/*
-          Same italic/uppercase contrast trick as HeroSection:
-          - "Simple" and "Design" are bold uppercase (authoritative)
-          - "by" is italic serif lowercase (elegant, soft)
-          - This contrast creates visual rhythm
-        */}
         <div className="lg:col-span-4">
           <h2 className="text-3xl md:text-4xl font-black leading-tight uppercase tracking-tighter">
             Simple <br />
-            <span className="font-serif italic font-light lowercase text-slate-400">
+            <span className="font-serif italic font-light lowercase opacity-70">
               by
             </span>{" "}
             <br />
@@ -90,37 +80,38 @@ export default function AboutSection() {
           </h2>
         </div>
 
-        {/* Right column: 2×2 card grid */}
-        {/*
-          md:grid-cols-2 → stacks to 1 column on mobile, 2 columns on tablet+
-          gap-16 → generous spacing so cards don't feel cramped
-        */}
-        <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
           {cards.map((card) => (
-            <div key={card.label} className="space-y-6">
-              {/* Icon + label row */}
-              {/*
-                card.icon is a component reference (e.g., Code2).
-                We render it as <card.icon /> — this is called
-                "component as prop" pattern in React.
-              */}
-              <div className="flex items-center gap-3">
-                <card.icon size={16} className="opacity-40" />
-                <span className="font-mono text-[9px] uppercase tracking-widest opacity-30">
+            <motion.div 
+              key={card.label} 
+              whileHover={{ y: -6 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className={`
+                group p-8 rounded-2xl border ${THEME.border} 
+                bg-white/5 dark:bg-black/20 backdrop-blur-md
+                hover:bg-white/40 dark:hover:bg-white/5 
+                hover:border-[#10B981]/30 dark:hover:border-[#34D399]/30
+                hover:shadow-[0_8px_30px_rgb(16,185,129,0.05)]
+                transition-all duration-300
+              `}
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 rounded-lg bg-black/5 dark:bg-white/5 group-hover:bg-[#10B981]/10 dark:group-hover:bg-[#34D399]/10 transition-colors">
+                  <card.icon size={16} className="opacity-60 group-hover:text-[#10B981] dark:group-hover:text-[#34D399] transition-colors" />
+                </div>
+                <span className="font-mono text-[9px] uppercase tracking-widest opacity-40 group-hover:opacity-80 transition-opacity">
                   {card.label}
                 </span>
               </div>
 
-              {/* Heading */}
-              <h4 className="text-2xl font-bold tracking-tighter uppercase">
+              <h4 className="text-2xl font-bold tracking-tighter uppercase mb-4">
                 {card.heading}
               </h4>
 
-              {/* Description */}
-              <p className="text-sm opacity-50 leading-relaxed max-w-xs font-light">
+              <p className="text-sm opacity-60 leading-relaxed font-light">
                 {card.text}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -24,7 +24,7 @@
 //     AboutSection → profile grid
 //     Footer → dark CTA block
 
-import ScrollPhysics from "../components/ScrollPhysics";
+import ScrollReveal from "../components/ScrollReveal";
 import NoiseOverlay from "../components/NoiseOverlay";
 import ScrollProgressBar from "../components/ScrollProgressBar";
 import Navbar from "../sections/Navbar";
@@ -43,8 +43,10 @@ export default function Home() {
         ${THEME.text}
         font-sans
         selection:bg-emerald-100
+        dark:selection:bg-emerald-900
         overflow-x-hidden
         relative
+        transition-colors duration-500
       `}
     >
       {/* Global effects — these are fixed/overlay, not part of scroll flow */}
@@ -52,15 +54,24 @@ export default function Home() {
       <ScrollProgressBar />
       <Navbar />
 
-      {/* Scrollable content — ScrollPhysics adds the velocity-skew effect */}
-      <ScrollPhysics>
-        <div className="px-6 md:px-12 lg:px-16 max-w-7xl mx-auto">
+      {/* Scrollable content — using cinematic ScrollReveal */}
+      <div className="px-6 md:px-12 lg:px-16 max-w-7xl mx-auto">
+        <ScrollReveal>
           <HeroSection />
+        </ScrollReveal>
+        
+        <ScrollReveal>
           <WorkSection />
+        </ScrollReveal>
+        
+        <ScrollReveal>
           <AboutSection />
+        </ScrollReveal>
+        
+        <ScrollReveal>
           <Footer />
-        </div>
-      </ScrollPhysics>
+        </ScrollReveal>
+      </div>
     </div>
   );
 }

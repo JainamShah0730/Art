@@ -1,43 +1,29 @@
+import { useState, useRef } from "react";
+import { motion } from "motion/react";
 
-import { useState, useRef } from "react"
-import { motion } from "motion/react"
-
-
-export default function MagneticElement({ children }) {
-    const ref = useRef(null)
-
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-
-    const handleMove = (e) => {
-        const element = ref.current;
-        const rect = element.getBoundingClientRect()
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2
-        const distanceX = e.clientX - centerX
-        const distanceY = e.clientY - centerY
-        const strength = 0.2
-
-        setPosition({
-            x: distanceX * strength,
-            y: distanceY * strength
-        })
-    }
-    const reset = () => {
-        setPosition({ x: 0, y: 0 })
-    }
-    return (
-        <motion.div ref={ref}
-            onMouseMove={handleMove}
-            onMouseLeave={reset}
-
-            animate={{ x: position.x, y: position.y }}
-            transition={{
-                type: "spring",
-                stiffness: 150,
-                damping: 15
-            }}
-        >
-            {children}
-        </motion.div>
-    )
+export default function MagneticElement({ children, strength = 0.2 }) {
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const ref = useRef(null);
+  
+  const handleMove = (e) => {
+    const { clientX, clientY } = e;
+    const { height, width, left, top } = ref.current.getBoundingClientRect();
+    setPos({ 
+      x: (clientX - (left + width / 2)) * strength, 
+      y: (clientY - (top + height / 2)) * strength 
+    });
+  };
+  
+  return (
+    <motion.div
+      ref={ref} 
+      onMouseMove={handleMove} 
+      onMouseLeave={() => setPos({ x: 0, y: 0 })}
+      animate={{ x: pos.x, y: pos.y }} 
+      transition={{ type: "spring", stiffness: 150, damping: 15 }}
+      className="inline-block"
+    >
+      {children}
+    </motion.div>
+  );
 }
