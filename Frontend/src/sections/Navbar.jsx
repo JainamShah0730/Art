@@ -55,13 +55,14 @@ export default function Navbar() {
       `}
     >
       {/* Left: Brand name & Pulse Capsule */}
-      <div className="flex items-center gap-2 sm:gap-6">
+      <div className="flex items-center gap-2 sm:gap-6 shrink-0">
         <span className="font-bold tracking-tighter text-sm sm:text-lg uppercase whitespace-nowrap">
           JAINAM SHAH
         </span>
         <div className={`flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 rounded-full text-[8px] sm:text-[9px] font-mono font-bold border transition-colors duration-500 whitespace-nowrap ${THEME.accentBg}`}>
           <span className="w-1.5 h-1.5 shrink-0 rounded-full bg-[#10B981] animate-pulse" />
-          OPEN FOR INTERNSHIPS
+          <span className="hidden sm:inline">OPEN FOR INTERNSHIPS</span>
+          <span className="inline sm:hidden">AVAILABLE</span>
         </div>
       </div>
 
