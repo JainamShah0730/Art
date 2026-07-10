@@ -56,11 +56,8 @@ export default function Navbar() {
     >
       {/* Left: Brand name & Pulse Capsule */}
       <div className="flex items-center gap-3 sm:gap-6">
-        <span className="font-bold tracking-tighter text-lg uppercase hidden min-[380px]:block">
-          JAINAM
-        </span>
-        <span className="font-bold tracking-tighter text-lg uppercase block min-[380px]:hidden">
-          JS
+        <span className="font-bold tracking-tighter text-sm sm:text-lg uppercase">
+          JAINAM SHAH
         </span>
         <div className={`flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 rounded-full text-[8px] sm:text-[9px] font-mono font-bold border transition-colors duration-500 ${THEME.accentBg}`}>
           <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
