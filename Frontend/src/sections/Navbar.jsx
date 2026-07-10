@@ -55,19 +55,22 @@ export default function Navbar() {
       `}
     >
       {/* Left: Brand name & Pulse Capsule */}
-      <div className="flex items-center gap-6">
-        <span className="font-bold tracking-tighter text-lg uppercase">
-          JAINAM SHAH
+      <div className="flex items-center gap-3 sm:gap-6">
+        <span className="font-bold tracking-tighter text-lg uppercase hidden min-[380px]:block">
+          JAINAM
         </span>
-        <div className={`hidden sm:flex items-center gap-2 px-3 py-1 rounded-full text-[9px] font-mono font-bold border transition-colors duration-500 ${THEME.accentBg}`}>
+        <span className="font-bold tracking-tighter text-lg uppercase block min-[380px]:hidden">
+          JS
+        </span>
+        <div className={`flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 rounded-full text-[8px] sm:text-[9px] font-mono font-bold border transition-colors duration-500 ${THEME.accentBg}`}>
           <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
           OPEN FOR INTERNSHIPS
         </div>
       </div>
 
       {/* Right: Navigation links, Clock, & Theme Toggle */}
-      <div className="flex gap-8 items-center font-mono text-[10px] uppercase tracking-[0.2em] font-bold">
-        <span className="hidden md:inline-block opacity-40">{time}</span>
+      <div className="flex gap-4 sm:gap-8 items-center font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.1em] sm:tracking-[0.2em] font-bold">
+        <span className="hidden min-[500px]:inline-block opacity-40">{time}</span>
         
         <a href="#work" className="hover:opacity-40 transition-opacity">Work</a>
         <a href="#about" className="hover:opacity-40 transition-opacity">About</a>
