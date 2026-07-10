@@ -50,17 +50,17 @@ export default function Navbar() {
   return (
     <nav
       className={`
-        fixed top-0 w-full z-50 px-6 py-5 flex justify-between items-center border-b
+        fixed top-0 w-full z-50 px-3 sm:px-6 py-4 sm:py-5 flex justify-between items-center border-b
         ${THEME.border} ${THEME.bg} bg-opacity-90 backdrop-blur-md transition-colors duration-500
       `}
     >
       {/* Left: Brand name & Pulse Capsule */}
-      <div className="flex items-center gap-3 sm:gap-6">
-        <span className="font-bold tracking-tighter text-sm sm:text-lg uppercase">
+      <div className="flex items-center gap-2 sm:gap-6">
+        <span className="font-bold tracking-tighter text-sm sm:text-lg uppercase whitespace-nowrap">
           JAINAM SHAH
         </span>
-        <div className={`flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 rounded-full text-[8px] sm:text-[9px] font-mono font-bold border transition-colors duration-500 ${THEME.accentBg}`}>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
+        <div className={`flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 rounded-full text-[8px] sm:text-[9px] font-mono font-bold border transition-colors duration-500 whitespace-nowrap ${THEME.accentBg}`}>
+          <span className="w-1.5 h-1.5 shrink-0 rounded-full bg-[#10B981] animate-pulse" />
           OPEN FOR INTERNSHIPS
         </div>
       </div>
